@@ -1,0 +1,78 @@
+.main-block {
+	padding-top: toRem(200);
+	@include adaptiveValue("padding-bottom", 70, 30);
+	min-height:100vh;
+	&__container {}
+}
+
+.main-swiper {}
+
+.main-swiper-slide {
+	position: relative;
+}
+
+.slide-main {
+	
+	&__body {
+		position: relative;
+		min-height: 75vh;
+		display: flex;
+		align-items: center;
+		margin: 0 auto;
+	}
+
+	&__content {
+		@include adaptiveValue("padding", 50, 15);
+		z-index: 1;
+	}
+
+	&__title {
+		&:not(:last-child){
+			@include adaptiveValue('margin-bottom', 50,30);
+		}
+		max-width: toRem(500);
+	}
+
+	&__button {
+		@media(any-hover:hover){
+			&:hover{
+				color: $mainColor;
+				background-color: $bgColor;
+				border: 0.0625rem solid $mainColor;
+			}
+		}
+	}
+
+	&__bg-img {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 0;
+		border-radius: toRem(50);
+		
+		img {
+			border-radius: toRem(50);
+			width: 100%;
+			height: 100%;
+			object-fit:fill;
+			opacity: 0.5;
+		}
+	}
+}
+
+
+.swiper-pagination-bullet{
+	background-color: $secondaryColor ;
+	height: toRem(10) ;
+	width: toRem(10) ;
+	border-radius: 50% ;
+	transition: all 0.8s;
+	opacity: 1 ;
+}
+
+.swiper-pagination-bullet-active{
+	width: toRem(30) ;
+	border-radius: toRem(25) ;
+}

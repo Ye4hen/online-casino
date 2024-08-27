@@ -1,0 +1,31 @@
+.bet-popup {
+
+	&__form {}
+}
+
+.form-bet-popup {
+	.balance-game{
+		@include adaptiveValue("margin-top", 20, 10);
+		@include adaptiveValue("margin-bottom", 20, 10);
+	}
+	&__coins {
+		@include adaptiveValue("margin-bottom", 40, 30);
+	}
+
+	&__coins-title {}
+
+	&__coins-item {}
+
+	&__coins-select {}
+
+	&__coins-amount {}
+
+	&__buttons {
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		@include adaptiveValue("gap", 20, 10);
+	}
+
+	&__button {}
+}

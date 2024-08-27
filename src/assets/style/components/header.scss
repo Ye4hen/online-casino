@@ -1,0 +1,256 @@
+.header {
+	padding: toRem(10) toRem(0);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 500;
+	background-color: rgba(0,0,0,.6);
+	
+	&__container {
+		display: grid;
+		grid-template-columns: toRem(200) 1fr ;
+		gap:toRem(20);
+		justify-content: space-between;
+		align-items: center;
+		@media (max-width:$mobile){
+			display: flex;
+		}
+	}
+
+	&__menu {
+		@media (max-width:$mobile){
+			order: 2;
+			justify-self: end;
+		}
+	}
+
+	&__links {
+		display: flex;
+		align-items: end;
+		justify-self: end;
+		gap:toRem(20);
+		@media (max-width:$mobile) {
+			svg{
+				height: toRem(40);
+				width: toRem(40);
+			}
+			transition: opacity 0.5s;
+			.popup-active &{
+				pointer-events: none;
+				opacity: 0;
+			}
+		}
+	}
+
+	&__link {
+		path{
+			fill: #fff;
+			transition: fill 0.3s;
+		}
+		@media(any-hover:hover){
+			&:hover{
+				path{
+					fill:$secondaryColor;
+				}
+			}
+		}
+	}
+
+	&__logo{
+		position: relative;
+		z-index: 5;
+		@media (max-width:$mobile){
+			transition: opacity 0.5s;
+			.popup-active &{
+				pointer-events: none;
+				opacity: 0;
+			}
+		}
+		img{
+			max-width: toRem(100);
+			// @media (max-width:$mobile){
+			// 	@include adaptiveValue("width", 200, 150);
+			// }
+		}
+	}
+}
+
+.menu {
+
+	&__icon {}
+
+	&__body {
+		display: grid;
+		grid-template-columns: 1fr toRem(200);
+		align-items: center;
+		gap:toRem(20);
+		@media (max-width:$mobile){
+			@include adaptiveValue("padding-top", 250, 200);
+			position: fixed;
+			top: 0;
+			left: -100%;
+			width: 100%;
+			height: 100%;
+			display: flex;
+			align-items: end;
+			flex-direction: column;
+			background-color: #142f3d;
+			transition: left .3s;
+			overflow: auto;
+			padding-left: toRem(15);
+			padding-right: toRem(15);
+			padding-bottom: toRem(30) ;
+			gap: toRem(30);
+			.menu-open &{
+				left: 0;
+			}
+			&::before{
+				content:'';
+				position: fixed;
+				top: 0;
+				left: -100%;
+				@include adaptiveValue("height", 160, 140);
+				width: 100%;
+				z-index: 4;
+				background-color:#25414f;
+				transition: left 0.3s;
+				.menu-open &{
+					left: 0;
+				}
+			}
+		}
+	}
+
+	&__content{
+		display: flex;
+		justify-self: center;
+		align-items: center;
+		@include adaptiveValue("gap", 50, 30, 0, $containerWidth, 767.98);
+		@media (max-width:$mobile){
+			flex-direction: column;
+			align-items: flex-end;
+		}
+	}
+
+	&__list {
+		display: flex;
+		flex-wrap: wrap;
+		row-gap: toRem(10);
+		@include adaptiveValue("column-gap", 40, 20, 0, $containerWidth, 767.98);
+		font-size: toRem(18);
+		@media (max-width:$mobile){
+			flex-direction: column;
+			font-size: toRem(40);
+			row-gap: toRem(30);
+			text-align: right;
+			transition: opacity 0.5s;
+			.popup-active &{
+				pointer-events: none;
+				opacity: 0;
+			}
+		}
+	}
+
+	&__item {}
+
+	&__link {
+		transition: color 0.3s;
+		@media(any-hover:hover){
+			&:hover{
+				color: $thirdColor;
+			}
+		}
+	}
+
+	&__button {}
+
+	&__search-icon {
+		path{
+			fill: #fff;
+			transition: fill 0.3s;
+		}
+		@media(any-hover:hover){
+			&:hover{
+				path{
+					fill:$secondaryColor;
+				}
+			}
+		}
+		@media (max-width:$mobile){
+			height: toRem(40);
+			width: toRem(40);
+			transition: opacity 0.5s;
+			.popup-active &{
+				pointer-events: none;
+				opacity: 0;
+			}
+		}
+	}
+}
+
+
+/*===========================================================================================*/
+
+.icon-menu {
+	display: none;
+
+	@media (max-width: $mobile) {
+		display: block;
+		position: relative;
+		width: toRem(30);
+		height: toRem(18);
+		z-index: 5;
+		transition: opacity 0.5s;
+		.popup-active & {
+			pointer-events: none;
+			opacity: 0;
+		}
+		@media (any-hover: none) {
+			cursor: default;
+		}
+
+		span,
+		&::before,
+		&::after {
+			content: "";
+			transition: all 0.3s ease 0s;
+			right: 0;
+			position: absolute;
+			width: 100%;
+			height: toRem(2);
+			background-color: $mainColor;
+		}
+
+		&::before {
+			top: 0;
+		}
+
+		&::after {
+			bottom: 0;
+		}
+
+		span {
+			top: calc(50% - toRem(1));
+		}
+
+		.menu-open & {
+			span {
+				width: 0;
+			}
+
+			&::before,
+			&::after {}
+
+			&::before {
+				top: calc(50% - toRem(1));
+				transform: rotate(-45deg);
+			}
+
+			&::after {
+				bottom: calc(50% - toRem(1));
+				transform: rotate(45deg);
+			}
+		}
+	}
+}

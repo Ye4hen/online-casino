@@ -1,0 +1,62 @@
+.product {
+	padding-top: toRem(200);
+	@include adaptiveValue("padding-bottom", 70, 30);
+	&__container {}
+
+	&__main {}
+}
+
+.main-product {	
+	// display: flex;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	align-items: center;
+	justify-content: space-between;
+	// flex-direction: row-reverse;
+	@include adaptiveValue("column-gap", 70, 30, 0, $containerWidth, 767.98);
+	@media (max-width:$mobile){
+		row-gap: toRem(30);
+		flex-direction: column-reverse;
+	}
+	&__info {
+		display: grid;
+		@include adaptiveValue("gap", 40, 20);
+		flex:1 1 50%;
+		order: 1;
+	}
+
+	&__title {}
+
+	&__price {
+		font-size: toRem(32);
+		font-family: $secondaryFontFamily;
+	}
+
+	&__count {
+		display: flex;
+		align-items: center;
+		@include adaptiveValue("gap", 20, 10);
+		span{
+			cursor: pointer;
+			@include adaptiveValue("font-size", 30, 20);
+			transition: color 0.3s;
+			@media(any-hover:hover){
+				&:hover{
+					color: $secondaryColor;
+				}
+			}
+		}
+	}
+
+	&__button {
+		margin-right: auto;
+	}
+
+	&__desc {}
+
+	&__image {
+		img{
+			max-width: 100%;
+		}
+	}
+}

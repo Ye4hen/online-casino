@@ -1,0 +1,90 @@
+.footer {
+	@include adaptiveValue("padding-top", 70, 30);
+	@include adaptiveValue("padding-bottom", 70, 30);
+	background-color: $darkColor;
+	&__container {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		@include adaptiveValue("gap", 70, 30);
+		flex-wrap: wrap;
+		@media (max-width:$mobile){
+			text-align: center;
+			justify-content: center;
+		}
+	}
+
+	&-main{}
+
+	&__nav {}
+
+}
+
+.nav-footer {
+	display: grid;
+	@include adaptiveValue("gap", 20, 10);
+	&__title {
+	}
+
+	&__list {
+		display: grid;
+		@include adaptiveValue("gap", 20, 10);
+	}
+
+	&__item {}
+
+	&__link {
+		transition: color 0.3s;
+		@media(any-hover:hover){
+			&:hover{
+				color: $thirdColor;
+			}
+		}
+	}
+}
+
+.main-footer {
+	display: grid;
+	@include adaptiveValue("gap", 30, 20);
+	max-width: toRem(500);
+	&__logo {
+		img{
+			max-width: toRem(200);
+		}
+	}
+
+	&__quote {
+		@include adaptiveValue("font-size", 20, 16);
+		font-weight: 700;
+		line-height: 1.5;
+	}
+
+	&__socials {
+		display: flex;
+		align-items: center;
+		@include adaptiveValue("column-gap", 30, 15);
+		row-gap: toRem(10);
+		@media (max-width:$mobile){
+			justify-content: center;
+		}
+	}
+	
+	&__social {
+		@media(any-hover:hover){
+			&:hover{
+				svg{
+					path{
+						fill: $thirdColor;
+					}
+				}
+			}
+		}
+		svg{
+			height: toRem(25);
+			width: toRem(25);
+			path{
+				transition: fill 0.3s;
+			}
+		}
+	}
+}

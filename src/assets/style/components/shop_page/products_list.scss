@@ -1,0 +1,133 @@
+.shop {
+	padding-top: toRem(200);
+	@include adaptiveValue("padding-bottom", 70, 30);
+	&__container{
+		display: flex;
+		justify-content: space-between;
+		gap:toRem(30);
+		@media (max-width:$tablet){
+			justify-content: center;
+		}
+		@media (max-width:$mobile){
+			flex-wrap: wrap;
+		}
+	}
+
+	&__list {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		@include adaptiveValue("gap", 70, 20);
+		@media (max-width:$tablet){
+			grid-template-columns: auto;
+		}
+	}
+
+	&__item {}
+
+	&__filter {}
+}
+
+.item-shop {
+	padding: toRem(40);
+	display: flex;
+	justify-self: end;
+	flex-direction: column-reverse;
+	max-width: toRem(300);
+	box-shadow: 0.5rem 0.5rem 1.5rem 0rem rgba(66, 68, 90, 1);
+	border-radius: toRem(30);
+	transition: box-shadow 0.3s;
+	cursor: pointer;
+	@media(any-hover:hover){
+		&:hover{
+			box-shadow: 0.25rem 0.25rem 0.75rem 0rem rgba(66, 68, 90, 0.7);
+		}
+	}
+	&:first-child {
+		.item-shop__image{
+			margin-left: toRem(-45);
+		}
+	}
+	&__info {
+		display: grid;
+		@include adaptiveValue("gap", 15, 5);
+	}
+
+	&__title {
+		@include adaptiveValue("font-size", 26, 20);
+		font-family: $secondaryFontFamily;
+		@media(any-hover:hover){
+			&:hover{
+				text-decoration: underline;
+			}
+		}
+	}
+
+	&__title-link {}
+
+	&__category {
+		@include adaptiveValue("font-size", 20, 16);
+		font-weight: 700;
+		font-family: $secondaryFontFamily;
+		text-transform: capitalize
+	}
+
+	&__tag {}
+
+	&__price {
+		@include adaptiveValue("font-size", 24, 18);
+		font-family: $secondaryFontFamily;
+	}
+
+	&__image {
+		margin-left: toRem(-40);
+		@media(any-hover:hover){
+			&:hover{
+				img{
+					transform: scale(1.05);
+				}
+			}
+		}
+		img{
+			transition: transform 0.3s;
+			max-height: toRem(300);
+			max-width: toRem(300);
+		}
+		@include adaptiveValue("margin-bottom", 30, 15);
+	}
+}
+
+.filter-shop {
+	display: flex;
+	flex-direction: column;
+	@include adaptiveValue("gap", 30, 20);
+	&__item {
+
+		&--checkboxes{
+			label{
+				display: flex;
+				gap:toRem(10);
+			}
+		}
+	}
+
+	&__list {
+		display: grid;
+		gap:toRem(10);
+	}
+
+	&__prices {
+
+	}
+
+	&__price {
+		label{
+			font-size: toRem(16);
+		}
+	}
+}
+
+
+.filter-shop__title--category{
+	font-size: toRem(18);
+	@include adaptiveValue("margin-bottom", 20, 10);
+}

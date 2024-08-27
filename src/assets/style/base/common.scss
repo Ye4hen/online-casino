@@ -1,0 +1,178 @@
+.title{
+	@include adaptiveValue("font-size", 55, 40);
+	font-family: $secondaryFontFamily;
+}
+
+.small-title {
+	font-size: toRem(32);
+	font-family: $secondaryFontFamily;
+	&:not(:last-child){
+		@include adaptiveValue('margin-bottom', 20, 15);
+	}
+}
+
+button{
+	&:disabled{
+		opacity: 0.6;
+		cursor: default;
+	}
+}
+
+.button {
+	padding: toRem(10) toRem(20);
+	background-color: $secondaryColor;
+	border: 0.0625rem solid $secondaryColor;
+	border-radius: toRem(8);
+	transition: all 0.3s;
+	&:disabled{
+		@media(any-hover:hover){
+			&:hover{
+				color: $mainColor;
+				background-color: $secondaryColor;
+				border: 0.0625rem solid $secondaryColor;
+				cursor: default;
+			}
+		}
+	}
+	@media(any-hover:hover){
+		&:hover{
+			background-color: transparent;
+			color: $secondaryColor;
+		}
+	}
+	&--transparent{
+		background-color: transparent;
+		color: $secondaryColor;
+		@media(any-hover:hover){
+			&:hover{
+				border: 0.0625rem solid $mainColor;
+				color: $mainColor;
+			}
+		}
+	}
+}
+
+.err-msg {
+	@include adaptiveValue("font-size", 20, 16);
+	color: red;
+	margin-top: toRem(10);
+}
+
+.scs-msg{
+	@include adaptiveValue("font-size", 20, 16);
+	color: $secondaryColor;
+	margin-top: toRem(10);
+}
+
+.item-form{
+	position: relative;
+	.see-pass-btn {
+			position: absolute;
+			top: 60%;
+			right: 5%;
+	
+			svg {
+				path {
+					fill: $secondaryColor;
+					transition: fill 0.3s;
+				}
+			}
+	
+			@media(any-hover:hover) {
+				&:hover {
+					svg {
+						path {
+							fill: $mainColor;
+						}
+					}
+				}
+			}
+		}
+	label{
+		display: grid;
+		@include adaptiveValue("gap", 10, 5);
+		text-align: left;
+		font-size: toRem(18);
+	}
+	input,
+	select,
+	textarea{
+		padding: toRem(5) toRem(10);
+		@include adaptiveValue("width", 300, 250);
+		background-color: transparent;
+		border: 0.0625rem solid $thirdColor;
+		color: $mainColor;
+		border-radius: toRem(12);
+		font-size: toRem(16);
+	}
+	select{
+		color: $mainColor;
+		background-color: $bgColor;
+	}
+	textarea{
+		padding: toRem(10) toRem(15);
+	}
+	&:not(:last-child){
+		@include adaptiveValue('margin-bottom', 20, 10);
+	}
+}
+
+.loading{
+	margin-top: toRem(150);
+	// position: absolute;
+	// top: 50%;
+	// right: 50%;
+	// transform: translateX(-50%);
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	svg{
+		width: 6.25rem;
+		height: 6.25rem;
+		margin: 1.25rem;
+		display:inline-block;
+	}
+}
+
+
+.has-error{
+	margin-top: toRem(300);
+		text-align: center;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	min-height:100vh;
+}
+
+
+/*===========================================================================================*/
+
+.hg-image {
+	// border-radius: 10px;
+	border: 5px solid;
+	animation: gradient-border 2s infinite;
+	background-clip: border-box;
+}
+
+@keyframes gradient-border {
+	0% {
+		border-image: linear-gradient(45deg, #ff003c, #ff8a00, #f0ff00, #00ff48, #00cfff, #003cff) 1;
+	}
+
+	25% {
+		border-image: linear-gradient(45deg, #ff8a00, #f0ff00, #00ff48, #00cfff, #003cff, #ff003c) 1;
+	}
+
+	50% {
+		border-image: linear-gradient(45deg, #f0ff00, #00ff48, #00cfff, #003cff, #ff003c, #ff8a00) 1;
+	}
+
+	75%{
+		border-image: linear-gradient(45deg, #ff8a00, #f0ff00, #00ff48, #00cfff, #003cff, #ff003c) 1;
+	}
+
+	100%{
+		border-image: linear-gradient(45deg, #ff003c, #ff8a00, #f0ff00, #00ff48, #00cfff, #003cff) 1;
+	}
+}

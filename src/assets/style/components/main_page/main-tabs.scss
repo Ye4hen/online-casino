@@ -1,0 +1,142 @@
+.main-tabs {
+	@include adaptiveValue("padding-top", 70,30);
+	@include adaptiveValue("padding-bottom", 70, 30);
+	&__container {}
+
+	&__title{
+		text-align: center;
+		@include adaptiveValue("margin-bottom", 50, 30);
+	}
+	
+	&__items {
+		display: flex;
+		flex-wrap: wrap;
+		row-gap: toRem(10);
+		@include adaptiveValue("column-gap", 50, 15);
+		@include adaptiveValue("margin-bottom", 30, 15);
+	}
+	
+	&__item {}
+
+	&__list {
+		display: grid;
+		grid-template-columns: repeat(4,1fr);
+		justify-content: space-between;
+		row-gap:toRem(30);
+		@include adaptiveValue("column-gap", 70, 20);
+		@media (max-width:$tablet){
+			grid-template-columns: repeat(3, 1fr);
+		}
+		@media (max-width:$mobile){
+			grid-template-columns: repeat(2, 1fr);
+		}
+		@media (max-width:$mobileSmall){
+			grid-template-columns: auto;
+		}
+	}
+}
+
+.item-main-tab {
+	position: relative;
+	display: flex;
+	flex-direction: column-reverse;
+	align-items: center;
+	overflow: hidden;
+	padding-bottom: toRem(10);
+	&:hover{
+		.item-main-tab__image::after{
+			opacity: 0.5;
+		}
+		.item-main-tab__image{
+			img{
+				transform: scale(1.05);
+			}
+		}
+		.item-main-tab__action{
+			top: 32%;
+			opacity: 1;
+			visibility: visible;
+			@media (max-width:$mobileSmall) {
+				top: 35%;
+			}
+		}
+	}
+
+	&__action{
+		position: absolute;
+		top: -20%;
+		left: 40%;
+		width: toRem(50);
+		height: toRem(50);
+		z-index: 1;
+		opacity: 0;
+		visibility: hidden;
+		transition: all 0.3s;
+		
+		@media (max-width:$mobileSmall) {
+				left:42%;
+		}
+
+			&:hover{
+				path{
+					fill:$thirdColor;
+				}
+			}
+	}
+	
+	&__info {
+		@include adaptiveValue("margin-top", 15, 10);
+		text-align: center;
+		display: grid;
+		@include adaptiveValue("gap", 15, 5);
+	}
+
+	&__title {
+		@include adaptiveValue("font-size", 28, 22);
+		font-family: $secondaryFontFamily;
+		@media(any-hover:hover){
+			&:hover{
+				text-decoration: underline;
+			}
+		}
+		&:not(:last-child){
+			margin-bottom: toRem(10);
+		}
+	}
+
+	&__category {
+		@include adaptiveValue("font-size", 22, 16);
+		font-family: $secondaryFontFamily;
+		color:$grayColor;
+	}
+
+	&__image {
+		position: relative;
+		max-width: 100%;
+		border-radius: toRem(12);
+		margin: 0 auto;
+		overflow: hidden;
+		img{
+			max-width: 100%;
+			border-radius: toRem(12);
+			transition: transform 0.3s;
+		}
+		&::after{
+			content: '';
+			position: absolute;
+			width: 100%;
+			border-radius: toRem(12);
+			background-color: hsl(0, 0%, 0%);
+			height: 100%;
+			opacity: 0;
+			left: 0;
+			top: 0;
+			transition: opacity 0.3s ease-in-out;
+		}
+	}
+}
+
+.active-tab-button{
+	background-color: $darkColor;
+	color: $secondaryColor;
+}

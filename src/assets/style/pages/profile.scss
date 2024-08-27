@@ -1,0 +1,258 @@
+.profile {
+	padding-top: toRem(200);
+	@include adaptiveValue("padding-bottom", 60, 30);
+
+	&__title {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap:em(10,55);
+		text-align: center;
+		@include adaptiveValue("font-size", 55, 25);
+		&:not(:last-child){
+		@include adaptiveValue('margin-bottom', 20, 10);
+		}
+	}
+
+	&__subtitle {
+		text-align: center;
+	}
+}
+
+.info-profile {
+	@include adaptiveValue("margin-top", 70, 50);
+	@include adaptiveValue("margin-bottom", 70, 50);
+	&__body {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: row-reverse;
+		@include adaptiveValue("gap", 120, 30);
+		flex-wrap: wrap-reverse;
+		@media (max-width:$mobile){
+		}
+	}
+
+	&__image {}
+
+	&__image-action {
+		display: grid;
+		gap:toRem(15);
+	}
+
+	&__image-button {}
+
+	&__image-body{
+		display: flex;
+		flex-direction: column-reverse;
+		@include adaptiveValue("gap", 30, 20);
+	}
+
+	&__avatar {
+		display: grid;
+		height: toRem(200);
+		width: toRem(200);
+		border-radius: 100%;
+		overflow: hidden;
+		margin: 0 auto;
+		background-color: $secondaryColor;
+		img{
+			align-self: center;
+			justify-self: center;
+			border-radius: 100%;
+			width: 100%;
+			height: toRem(200);
+		}
+	}
+
+	&__main {}
+
+	&__action {}
+}
+
+.main-info-profile {
+	&__name {
+		@include adaptiveValue("font-size", 40, 20);
+	}
+
+	&__email {
+		@include adaptiveValue("font-size", 30, 20);
+		font-family: $secondaryFontFamily;
+		&:not(:last-child){
+			@include adaptiveValue('margin-bottom', 30, 15);
+		}
+	}
+}
+
+.action-info-profile {
+
+	&__title {}
+
+	&__button {}
+}
+
+.form-profile {
+	display: grid;
+	justify-content: center;
+	&:not(:last-child){
+		@include adaptiveValue('margin-bottom', 70, 50);
+	}
+	&__title {}
+
+	&__items {
+		@include adaptiveValue("padding-bottom", 20, 10);
+		display: grid;
+		justify-content: center;
+	}
+
+	&__item {
+	}
+
+	&__buttons {
+		display: flex;
+		justify-content: center;
+		gap:toRem(30);
+	}
+
+	&__button {}
+}
+
+.inventory-profile {
+
+	&__title {
+		&:not(:last-child){
+		@include adaptiveValue('margin-bottom', 50, 30);
+		}
+	}
+
+	&__list {
+		display: grid;
+		@include adaptiveValue("gap", 50, 20);
+	}
+
+	&__top {
+		text-align: center;
+	}
+
+	&__subtitle {
+		@include adaptiveValue("font-size", 24, 20);
+		&-link{
+			color: $secondaryColor;
+		}
+	}
+}
+
+.balance-profile {
+	text-align: center;
+	&:not(:last-child) {
+		@include adaptiveValue('margin-bottom', 70, 50);
+	}
+	&__top {
+		@include adaptiveValue("margin-bottom", 40, 20);
+	}
+
+	&__title {}
+
+	&__balance {
+		color: $secondaryColor;
+		span{
+			color: $thirdColor;
+		}
+	}
+
+	&__main {
+		display: flex;
+		justify-content: center;
+		gap:toRem(30);
+		flex-wrap: wrap;
+		@include adaptiveValue("gap", 30, 15);
+	}
+
+	&__button {}
+}
+
+.item-inventory-profile {
+	&__info {
+		display: flex;
+		align-items: center;
+		flex-direction: row-reverse;
+		@include adaptiveValue("gap", 50, 15);
+		justify-content: space-between;
+		@media (max-width:$tablet){
+			flex-wrap: wrap;
+			justify-content: center;
+		}
+		@media (max-width:$mobile){
+			flex-direction: column-reverse;
+		}
+	}
+
+	&__sell {
+		display: grid;
+		// max-width: toRem(100);
+		@media (max-width:$tablet){
+			// order: -1;
+		}
+	}
+
+	&__sell-count {
+		display: flex;
+		align-items: center;
+		column-gap:toRem(5);
+		input{
+			width: 100%;
+			text-align: center;
+		}
+		span,
+		button{
+			max-width: 100%;
+			transform: translateY(toRem(-2));
+			cursor: pointer;
+			@include adaptiveValue("font-size", 30, 20);
+			transition: color 0.3s;
+			@media(any-hover:hover){
+				&:hover{
+					color: $secondaryColor;
+				}
+			}
+			user-select: none;
+			&:disabled{
+				cursor: default;
+				opacity: 0.5;
+			}
+		}
+	}
+
+	&__sell-button {
+		&:disabled{
+			cursor: default;
+			opacity: 0.5;
+		}
+	}
+
+	&__title {
+		font-size: toRem(30);
+		font-family: $secondaryFontFamily;
+		transition: color 0.3s;
+		@media(any-hover:hover){
+			&:hover{
+				text-decoration: underline;
+				color: $secondaryColor;
+			}
+		}
+	}
+
+	&__image {
+		img{
+			max-width: toRem(300);
+			border-radius: toRem(30);
+		}
+	}
+
+	&__amount {
+		@include adaptiveValue("font-size", 18, 16);
+		@include adaptiveValue("padding", 20, 15);
+		border-radius: 100%;
+		background-color: $secondaryColor;	
+	}
+}

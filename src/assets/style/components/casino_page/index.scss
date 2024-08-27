@@ -1,0 +1,70 @@
+.casino {
+	padding-top: toRem(130);
+	@include adaptiveValue("padding-bottom", 70, 40);
+	&__coins {}
+
+	&__container {
+		display: flex;
+		flex-direction: column;
+		@include adaptiveValue("gap", 70, 30);
+	}
+
+	&__wheel{
+
+	}
+
+	&__body{
+		display: flex;
+		flex-direction: column;
+		@include adaptiveValue("gap", 70, 30);
+	}
+
+	&__title{
+		text-align: center;
+	}
+}
+
+.coins-casino {
+
+	&__body {
+	}
+	
+	&__title {
+		text-align: center;
+	}
+	
+	&__list {
+		padding: toRem(0) toRem(50);
+	}
+
+	&__item {}
+}
+
+.item-casino-coin {
+	cursor: pointer;
+	display: flex;
+	flex-direction: column-reverse;
+	text-align: center;
+	&__name {
+
+	}
+	
+	&__img {
+		img{
+			max-width: 100%;
+			border: 0.1875rem solid transparent;
+			border-radius: 50%;
+		}
+	}
+}
+
+.chosen-coin{
+	img{
+		border: 0.1875rem solid $secondaryColor;
+	}
+}
+
+.swiper-button-next,
+.swiper-button-prev{
+	color: $secondaryColor;
+}
